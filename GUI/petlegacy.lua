@@ -1,3 +1,5 @@
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+
 getgenv().autojunglechest = false
 getgenv().automoai = false
 getgenv().autocatch = false

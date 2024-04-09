@@ -31,7 +31,6 @@ local open = Instance.new("Frame")
 local OpenMain = Instance.new("TextButton")
 local CLOSEBUTTON = Instance.new("TextButton")
 local CloseMain = Instance.new("TextButton")
---Properties:
 KnifeSimulatorGUI.Name = "Knife Simulator GUI"
 KnifeSimulatorGUI.Parent = game.CoreGui
 
@@ -151,7 +150,7 @@ CloseAimbot.MouseButton1Click:Connect(function()
             local nearestPlayer, shortestDistance = nil, math.huge
             
             for _, player in pairs(playersService:GetPlayers()) do
-                if player ~= localPlayer then -- Exclude local player
+                if player ~= localPlayer then
                     local character = player.Character
                     if character then
                         local primaryPart = character.PrimaryPart
@@ -173,7 +172,7 @@ CloseAimbot.MouseButton1Click:Connect(function()
             end
         end
         
-        local trashFolder = workspace.CurrentCamera:WaitForChild("trash") -- Use WaitForChild to avoid potential race conditions
+        local trashFolder = workspace.CurrentCamera:WaitForChild("trash")
         
         trashFolder.ChildAdded:Connect(function(child)
             child.CFrame = CFrame.new(findNearestPlayer())
@@ -451,10 +450,9 @@ end
 
 OpenTP.MouseButton1Click:Connect(function()
     enableCoreGui()
-    wait() -- Wait for a frame before accessing the mouse
+    wait()
     local mouse = game.Players.LocalPlayer:GetMouse()
     activateTeleportTool(mouse)
-    -- Additional code you may have
 end)
 
 

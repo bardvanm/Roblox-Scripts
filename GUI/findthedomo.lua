@@ -1,7 +1,7 @@
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 getgenv().autocrate = true
 
 local ws = game:GetService('Workspace')
-
 local lp = game.Players.LocalPlayer
 
 function touchinterest(part)

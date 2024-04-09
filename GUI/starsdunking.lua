@@ -1,14 +1,13 @@
--- hope you can fix this script :D
-
 repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
-local autostats = false
-local autodunk = false
-local autoupgrade = false
-local autoballs = false
-local autojerseys = false
-local autoshoes = false
-local autorebirth = false
-local autocontest = false
+
+getgenv().autostats = false
+getgenv().autodunk = false
+getgenv().autoupgrade = false
+getgenv().autoballs = false
+getgenv().autojerseys = false
+getgenv().autoshoes = false
+getgenv().autorebirth = false
+getgenv().autocontest = false
 
 local lp = game.Players.LocalPlayer
 local ws = game:GetService('Workspace')
@@ -83,8 +82,7 @@ end
 
 local function autodunk()
     spawn(function () 
-        while wait() do
-            if not autodunk then lp.Character.HumanoidRootPart.Anchored = false break end
+        while getgenv().autodunk do
             lp.Character.HumanoidRootPart.Anchored = false    
             lp.Character.HumanoidRootPart.CFrame = ws.BlueGoal1.Score.CFrame + Vector3.new(autodunkdistance,0,0)
             lp.Character.Ball.ServerEvent:FireServer('Accuracy', 1)
@@ -99,8 +97,7 @@ end
 
 local function autoupgrade()
     spawn(function () 
-        while wait() do
-            if not autoupgrade then break end
+        while getgenv().autoupgrade do
             serverEvent:FireServer('Dunk')
         end
     end)
@@ -108,8 +105,7 @@ end
 
 local function autoballs()
     spawn(function () 
-        while wait() do
-            if not autoballs then break end
+        while getgenv().autoballs do
             for i, v in pairs(balls) do
                 serverEvent:FireServer('Buy', 'Balls', v)
                 serverEvent:FireServer('Equip', 'Balls', 'Fire & Ice')
@@ -121,8 +117,7 @@ end
 
 local function autojerseys()
     spawn(function () 
-        while wait() do
-            if not autojerseys then break end
+        while getgenv().autojerseys do
             for i, v in pairs(jerseys) do
                 serverEvent:FireServer('Buy', 'Jerseys', v)
                 wait(0.1)
@@ -133,8 +128,7 @@ end
 
 local function autoshoes()
     spawn(function () 
-        while wait() do
-            if not autoshoes then break end
+        while getgenv().autoshoes do
             for i, v in pairs(balls) do
                 serverEvent:FireServer('Buy', 'Shoes', v)
                 wait(0.1)
@@ -145,8 +139,7 @@ end
 
 local function autorebirth()
     spawn(function () 
-        while wait() do
-            if not autorebirth then break end
+        while getgenv().autorebirth do
             serverEvent:FireServer('Rebirth')
         end
     end)
@@ -161,14 +154,14 @@ local m = w:CreateFolder('Player🙉')
 local d = w:CreateFolder('Demolish💥') 
 
 s:Toggle('auto stats',function(bool)
-    autostats = bool
+    getgenv().autostats = bool
     if bool then 
         autostats()
     end
 end)
 
 f:Toggle('auto dunk',function(bool)
-    autodunk = bool
+    getgenv().autodunk = bool
     if bool then 
         autodunk()
     end
@@ -183,35 +176,35 @@ f:Slider('auto dunk distance',{
 end)
 
 f:Toggle('auto upgrade',function(bool)
-    autoupgrade = bool
+    getgenv().autoupgrade = bool
     if bool then 
         autoupgrade()
     end
 end)
 
 f:Toggle('auto balls',function(bool)
-    autoballs = bool
+    getgenv().autoballs = bool
     if bool then 
         autoballs()
     end
 end)
 
 f:Toggle('auto jerseys',function(bool)
-    autojerseys = bool
+    getgenv().autojerseys = bool
     if bool then 
         autojerseys()
     end
 end)
 
 f:Toggle('auto shoes',function(bool)
-    autoshoes = bool
+    getgenv().autoshoes = bool
     if bool then 
         autoshoes()
     end
 end)
 
 f:Toggle('auto rebirth',function(bool)
-    autorebirth = bool
+    getgenv().autorebirth = bool
     if bool then 
         autorebirth()
     end
